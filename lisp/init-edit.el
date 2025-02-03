@@ -11,30 +11,18 @@
 (global-set-key (kbd "C-h C-m") 'which-key-show-major-mode) ; 'view-order-manuals
 
 ;;; Configs
-;; Visual Line Mode
 (global-visual-line-mode 1)
-
-;; Outline minor mode
 (add-hook 'prog-mode-hook #'outline-minor-mode)
-
-;; Line Number
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-;; Parentheses
 (electric-pair-mode)
-
 ;; Typed text replaces the selection if the selection is active,
 ;; pressing delete or backspace deletes the selection.
 (delete-selection-mode)
-
 ;; Use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
 ;; open url/file
 (global-set-key (kbd "C-c C-o") 'find-file-at-point)
-
-;;; Keybindings
-(global-set-key (kbd "M-j") #'evil-join)
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -55,8 +43,16 @@
 
 (global-set-key (kbd "C-x C-r") #'rename-current-buffer-file) ; 'find-file-read-only
 
-;;; Check spelling
-(add-hook 'text-mode-hook #'flyspell-mode)
+;;; flyspell
+(setq ispell-program-name "aspell"
+      ispell-dictionary "english")
+
+;; move personal dictionary into .emacs.d/var
+(setq ispell-personal-dictionary
+      (expand-file-name (concat "ispell/" ispell-dictionary ".pws")
+                        no-littering-var-directory))
+
+(add-hook 'text-mode-hook 'flyspell-mode)
 
 ;;; Tempel
 ;; Configure Tempel

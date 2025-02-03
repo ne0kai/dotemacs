@@ -38,14 +38,14 @@
       org-ellipsis " …")
 
 ;; Resize Titles and Headings
-(require 'org-faces) 
-(dolist (face '((org-level-1 . 1.3)
-                 (org-level-2 . 1.2)
-                 (org-level-3 . 1.15)
-                 (org-level-4 . 1.1)
-                (org-level-5 . 1.05)))
-  (set-face-attribute (car face) nil :height (cdr face))) ; Resize Headings
-(set-face-attribute 'org-document-title nil :weight 'bold :height 1.3) ; Resize title
+;; (require 'org-faces) 
+;; (dolist (face '((org-level-1 . 1.3)
+;;                  (org-level-2 . 1.2)
+;;                  (org-level-3 . 1.15)
+;;                  (org-level-4 . 1.1)
+;;                 (org-level-5 . 1.05)))
+;;   (set-face-attribute (car face) nil :height (cdr face))) ; Resize Headings
+;; (set-face-attribute 'org-document-title nil :weight 'bold :height 1.3) ; Resize title
 
 ;; Beautify Lists and Stars
 (setq org-list-demote-modify-bullet '(("-" . "+") ("+" . "-") ("*" . "-"))

@@ -16,7 +16,7 @@
  (sys/winp
   (set-face-attribute 'default nil :family "Consolas" :height 140))
  (sys/macp
-  (set-face-attribute 'default nil :family "SFMono Nerd Font" :height 170)
+  (set-face-attribute 'default nil :family "RobotoMono Nerd Font" :height 170)
   (set-face-attribute 'variable-pitch nil :family "Palatino" :height 190)
   (set-fontset-font t 'symbol "Apple Color Emoji" nil 'prepend))
  (sys/linuxp
@@ -30,7 +30,7 @@
 (defun my-change-font-size (new-size)
   "Change the font size to the given value"
   (interactive "nNew font size (default 17): ")
-  (set-face-attribute 'default nil :family "SFMono Nerd Font" :height (* 10 new-size)))
+  (set-face-attribute 'default nil :family "RobotoMono Nerd Font" :height (* 10 new-size)))
 (global-set-key (kbd "C-x -") #'my-change-font-size)
 
 ;;; Theme

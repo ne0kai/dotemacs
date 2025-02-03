@@ -7,8 +7,7 @@
 (straight-use-package 'popper)   ; https://github.com/karthink/popper
 
 ;;; avy
-(global-set-key (kbd "C-;") 'avy-goto-char-2)
-(global-set-key (kbd "C-:") 'avy-goto-char)
+(evil-global-set-key 'normal (kbd ",") 'avy-goto-line) ; goto-word-0 too much keystroke
 
 ;;; recentf
 (add-hook 'emacs-startup-hook 'recentf-mode)
@@ -28,8 +27,9 @@
 (global-set-key (kbd "C-x b") 'consult-buffer)     ; 'switch-buffer
 (global-set-key (kbd "C-x p b") 'consult-project-buffer)     ; 'project-switch-buffer
 (global-set-key (kbd "C-s") 'consult-line)         ; 'i-search
-(global-set-key (kbd "M-s") 'consult-ripgrep)      ; isearch related prefix key
+(global-set-key (kbd "C-c s") 'consult-ripgrep)    ; search
 (global-set-key (kbd "M-g g") 'consult-goto-line)  ; 'goto-line
+(global-set-key (kbd "M-g M-g") 'consult-goto-line)  ; 'goto-line
 
 ;; use consult to select xref locations with preview
 (setq xref-show-definitions-function #'consult-xref

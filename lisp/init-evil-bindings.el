@@ -1,13 +1,12 @@
-;;; init-bindings.el --- My own evil-collection
+;;; init-evil-bindings.el --- My own evil-collection
 ;; https://github.com/emacs-evil/evil-collection
-;; The comment after line is the function that key originally repr esents
+;; The comment after line is the function that key originally represents
 
 ;;; Evil initial states
 (dolist (states '((minibuffer-inactive-mode . emacs)
              (calendar-mode . emacs)
              (dired-mode . emacs)
              (Info-mode . emacs)
-             (help-mode . emacs)
              (woman-mode . emacs)
              (term-mode . emacs)
              (special-mode . emacs)
@@ -82,10 +81,6 @@
 (with-eval-after-load 'info
   (my-evil-jk-line-macro Info-mode-map))
 
-;;; help-mode  
-(with-eval-after-load 'help
-  (my-evil-jk-line-macro help-mode-map))
-
 ;;; Imenu-list
 (with-eval-after-load 'imenu-list
   (my-evil-jk-line-macro imenu-list-major-mode-map))
@@ -117,4 +112,4 @@
 (with-eval-after-load 'nov
   (my-evil-jk-line-macro nov-mode-map))
 
-(provide 'init-bindings)
+(provide 'init-evil-bindings)

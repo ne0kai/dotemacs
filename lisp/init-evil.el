@@ -8,8 +8,7 @@
 (setq evil-want-C-u-scroll nil          ; Preserve C-u
       evil-want-C-u-delete t            ; Use C-u in insert mode
       evil-want-C-w-in-emacs-state t    ; C-w as window management
-      evil-want-C-i-jump nil            ; Otherwise TAB is broke
-      evil-want-keybinding nil          ; Compatibility with (k)evil-collection
+      evil-want-keybinding nil          ; Compatibility with evil-collection
       evil-disable-insert-state-bindings t ; Enable emacs bindings in insert state
       evil-respect-visual-line-mode t
       evil-undo-system 'undo-redo)      ; Use Emacs native undo system
@@ -48,9 +47,7 @@
 (evil-global-set-key 'motion (kbd "C-w C-h") nil) ; evil-window-left
 
 ;;; Evil insert state map.
-(evil-global-set-key 'insert (kbd "C-h") 'evil-delete-backward-char-and-join)
 (evil-global-set-key 'insert (kbd "C-w") 'evil-delete-backward-word)
 (evil-global-set-key 'insert (kbd "C-u") 'evil-delete-back-to-indentation)
-(evil-global-set-key 'insert (kbd "M-h") (lookup-key global-map (kbd "C-h"))) ; mark-paragraph
 
 (provide 'init-evil)

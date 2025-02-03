@@ -17,8 +17,11 @@
 ;;; base
 (require 'init-package)
 (require 'init-defaults)
+
+;;; evil
 (require 'init-evil)
-(require 'init-bindings)
+(require 'init-evil-bindings)
+(require 'init-evil-plugs)
 
 ;;; core
 (require 'init-navigation)

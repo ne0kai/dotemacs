@@ -49,31 +49,25 @@
 (straight-use-package 'treemacs-evil)   ; included in treemacs
 (straight-use-package 'treemacs-magit)  ; included in treemacs
 
-(global-set-key (kbd "M-o") 'treemacs-select-window)
-
-(evil-global-set-key 'normal (kbd "C-t") nil) ; pop-tag-mark
-(define-prefix-command 'treemacs-prefix-map)
-(global-set-key (kbd "C-t") 'treemacs-prefix-map) ; transpose-chars
-(define-key treemacs-prefix-map (kbd "t") 'treemacs)
-(define-key treemacs-prefix-map (kbd "f") 'treemacs-find-file)
-(define-key treemacs-prefix-map (kbd "d") 'treemacs-select-directory)
-(define-key treemacs-prefix-map (kbd "b") 'treemacs-bookmark)
+(global-set-key (kbd "C-x t") 'treemacs) ; forward-char
  
 (with-eval-after-load 'treemacs
   (require 'treemacs-evil)
   (require 'treemacs-magit)
   (require 'treemacs-nerd-icons)
 
+  (define-key evil-treemacs-state-map (kbd "f") #'treemacs-select-directory)
+
   (treemacs-load-theme "nerd-icons")
   (treemacs-filewatch-mode)
   (treemacs-git-mode 'simple)
 
-  (setq treemacs-width 25
+  (setq treemacs-width 30
         treemacs-wide-toggle-width 50))
 
 ;;; imenu-list
 ;; use the same prefix key as treemacs
-(define-key treemacs-prefix-map (kbd "m") 'imenu-list-smart-toggle)
+(global-set-key (kbd "C-x m") 'imenu-list-smart-toggle) ; compose-mail
 (setq imenu-list-size 0.25)
 
 (provide 'init-prog)

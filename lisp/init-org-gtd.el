@@ -34,9 +34,9 @@
         nil "\[[a-z]+\]"))
 
 (setq org-capture-templates
- '(("t" "Todo" entry (file "~/org/inbox.org")
+ '(("t" "Todo" entry (file+headline "~/org/admin.org" "Inbox")
      "* TODO %?\n%U\n\n  %i")
-    ("l" "Link" entry (file "~/org/inbox.org")
+    ("l" "Link" entry (file "~/org/admin.org" "Inbox")
      "* %?\n%U\n\n  %i\n  %a")
 ))
 
@@ -64,7 +64,7 @@
 
 ;;; Agenda
 ;; Agenda files
-(setq org-agenda-files '("~/org/inbox.org"
+(setq org-agenda-files '("~/org/admin.org"
                          "~/org/cs.org"
                          "~/org/phil.org"))
 

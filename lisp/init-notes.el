@@ -5,7 +5,10 @@
 (straight-use-package 'consult-notes)   ; https://github.com/mclear-tools/consult-notes
 
 ;;; Writeroom-mode
-;; default width is 80 characters
+;; disable native fullscreen (stay in the workspace)
+(setq writeroom-fullscreen-effect 'maximized)
+
+;; default width is 80 characters.
 (with-eval-after-load 'writeroom-mode
   (define-key writeroom-mode-map (kbd "C-<") #'writeroom-decrease-width)
   (define-key writeroom-mode-map (kbd "C->") #'writeroom-increase-width)
@@ -38,6 +41,23 @@
 
 (global-set-key (kbd "C-c o") 'obsidian-jump)
 (global-obsidian-mode)
+
+;;; journal entry
+(defun my-journal-entry ()
+  "Open today's journal file and insert a new entry with the current time."
+  (interactive)
+  (let* ((date (format-time-string "%Y-%m-%d"))           ; Get today's date
+         (filename (concat "~/mind/daily/" date ".md"))  ; Build the filename
+         (time (format-time-string "\n## %H:%M ")))         ; Format the time as '## hh:mm'
+    
+    ;; Open the file and insert the journal entry at the end
+    (find-file filename)
+    (my-writing-mode)
+    (goto-char (point-max))   ; Go to the end of the file
+    (insert time)             ; Insert the formatted time entry
+    (evil-insert-state)))
+
+(global-set-key (kbd "C-c j") #'my-journal-entry)
 
 ;;; consult-notes
 (setq consult-notes-file-dir-sources

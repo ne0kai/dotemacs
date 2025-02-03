@@ -23,8 +23,8 @@
 ;; Default frame settings
 (setq default-frame-alist
       (append (list
-               '(min-height . 1)  '(height . 35)
-               '(min-width  . 1)  '(width  . 80)
+               '(min-height . 1)  '(height . 40)
+               '(min-width  . 1)  '(width  . 120)
                '(internal-border-width . 12)
                '(left-fringe . 12)
                '(right-fringe . 12))))
