@@ -27,7 +27,7 @@
 (require 'init-package)
 (require 'init-defaults)
 (require 'init-evil)
-(require 'init-bindings)
+(require 'init-evil-bindings)
 
 ;;; Interface
 (cond

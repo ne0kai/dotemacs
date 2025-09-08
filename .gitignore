@@ -5,3 +5,4 @@ var/
 auto-save-list/
 eln-cache/
 site-lisp/
+etc/

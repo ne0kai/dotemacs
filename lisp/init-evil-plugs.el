@@ -2,7 +2,7 @@
 
 (require 'init-evil)
 
-(straight-use-package        ;https://github.com/zmaas/evil-unimpaired
+(straight-use-package        ; https://github.com/zmaas/evil-unimpaired
  '(evil-unimpaired :type git :host github :repo "zmaas/evil-unimpaired"))
 (straight-use-package 'evil-snipe)      ; https://github.com/hlissner/evil-snipe
 

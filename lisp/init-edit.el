@@ -52,7 +52,8 @@
       (expand-file-name (concat "ispell/" ispell-dictionary ".pws")
                         no-littering-var-directory))
 
-(add-hook 'text-mode-hook 'flyspell-mode)
+;; flyspell-correct-word-before-point (C-c $) conflicts with org-archive-subtree
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
 ;;; Tempel
 ;; Configure Tempel

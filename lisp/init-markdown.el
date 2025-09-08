@@ -11,6 +11,7 @@
 (setq markdown-enable-wiki-links t
       markdown-asymmetric-header t
       markdown-hide-urls t
+      markdown-hide-markup nil
       markdown-fontify-code-blocks-natively t)
 
 (customize-set-variable 'markdown-header-scaling nil)

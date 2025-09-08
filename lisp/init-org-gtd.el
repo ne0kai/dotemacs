@@ -29,15 +29,15 @@
 ;; if it contains any NEXT keyword item, the project is marked unstuck
 ;; headline in bracket is also marked unstuck
 (setq org-stuck-projects
-      '("+LEVEL=1-CATEGORY=\"inbox\"-CATEGORY=\"journal\"/-DONE-CNCL-WAIT"
+      '("+LEVEL=1-CATEGORY=\"inbox\"/-DONE-CNCL-WAIT"
         ("NEXT")
         nil "\[[a-z]+\]"))
 
 (setq org-capture-templates
- '(("t" "Todo" entry (file+headline "~/org/admin.org" "Inbox")
+ '(("t" "Todo" entry (file "~/org/inbox.org")
      "* TODO %?\n%U\n\n  %i")
-    ("l" "Link" entry (file "~/org/admin.org" "Inbox")
-     "* %?\n%U\n\n  %i\n  %a")
+   ("l" "Link" entry (file "~/org/inbox.org")
+    "* %?\n%U\n\n  %i\n  %a")
 ))
 
 ;;; Refile
@@ -64,9 +64,10 @@
 
 ;;; Agenda
 ;; Agenda files
-(setq org-agenda-files '("~/org/admin.org"
-                         "~/org/cs.org"
-                         "~/org/phil.org"))
+(setq org-agenda-files '("~/org/inbox.org"
+                         "~/org/school.org"
+                         "~/org/work.org"
+                         "~/org/self.org"))
 
 ;; Display settings.
 (setq org-agenda-window-setup 'current-window

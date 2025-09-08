@@ -1,7 +1,6 @@
 ;;; init-notes.el --- Writing (Markdown) notes in Emacs
 
 (straight-use-package 'writeroom-mode)  ; https://github.com/joostkremers/writeroom-mode
-(straight-use-package 'obsidian)        ; https://github.com/licht1stein/obsidian.el
 (straight-use-package 'consult-notes)   ; https://github.com/mclear-tools/consult-notes
 
 ;;; Writeroom-mode
@@ -23,36 +22,22 @@
      (sys/linuxp (setq buffer-face-mode-face '(:family "iA Writer Duospace" :height 130))))
     (buffer-face-mode))
 
-;;; Obsidian
-(obsidian-specify-path "~/mind")
-
-;; Define obsidian-mode bindings
-(add-hook
- 'obsidian-mode-hook
- (lambda ()
-   ;; Replace standard command with Obsidian.el's in obsidian vault:
-   (local-set-key (kbd "C-c C-o") 'obsidian-follow-link-at-point)
-
-   ;; Use either `obsidian-insert-wikilink' or `obsidian-insert-link':
-   (local-set-key (kbd "C-c C-l") 'obsidian-insert-wikilink)
-
-   ;; Following backlinks
-   (local-set-key (kbd "C-c C-b") 'obsidian-backlink-jump)))
-
-(global-set-key (kbd "C-c o") 'obsidian-jump)
-(global-obsidian-mode)
-
 ;;; journal entry
 (defun my-journal-entry ()
-  "Open today's journal file and insert a new entry with the current time."
+  "Open today's journal file and insert a new entry with the current time.
+If the file is new, insert a title header."
   (interactive)
   (let* ((date (format-time-string "%Y-%m-%d"))           ; Get today's date
-         (filename (concat "~/mind/daily/" date ".md"))  ; Build the filename
-         (time (format-time-string "\n## %H:%M ")))         ; Format the time as '## hh:mm'
+         (weekday (format-time-string "%A"))
+         (filename (concat "~/mind/timeline/daily/" date ".md"))  ; Build the filename
+         (time (format-time-string "\n\n## %H:%M "))         ; Format the time as '## hh:mm'
+         (new-file (not (file-exists-p filename)))) ; Check if file is new
     
     ;; Open the file and insert the journal entry at the end
     (find-file filename)
     (my-writing-mode)
+    (when new-file
+      (insert (format "# %s %s" date weekday))) ; Insert header if new
     (goto-char (point-max))   ; Go to the end of the file
     (insert time)             ; Insert the formatted time entry
     (evil-insert-state)))

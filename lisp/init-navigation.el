@@ -4,7 +4,6 @@
 (straight-use-package 'rg)       ; https://github.com/dajva/rg.el
 (straight-use-package 'avy)      ; https://github.com/abo-abo/avy
 (straight-use-package 'consult)  ; https://github.com/minad/consult
-(straight-use-package 'popper)   ; https://github.com/karthink/popper
 
 ;;; avy
 (evil-global-set-key 'normal (kbd ",") 'avy-goto-line) ; goto-word-0 too much keystroke
@@ -46,56 +45,5 @@
                               "*Apropos"
                               "*Compile-Log*"
                               "*Ibuffer*"))
-
-;;; Popper -- pop up windows
-(setq popper-display-function #'display-buffer-below-selected
-      popper-echo-dispatch-actions t)
-
-(global-set-key (kbd "C-`") 'popper-toggle) 
-(global-set-key (kbd "M-`") 'popper-cycle)
-(global-set-key (kbd "C-M-`") 'popper-toggle-type)
-
-(setq popper-reference-buffers
-      '("\\*Messages\\*"
-        "Output\\*$"
-        "^\\*eldoc.*\\*$"
-        "\\*Compile-Log\\*$"
-        "\\*Completions\\*$"
-        "\\*Warnings\\*$"
-        "\\*Async Shell Command\\*$"
-        "\\*Apropos\\*$"
-        "\\*Backtrace\\*$"
-        "\\*Calendar\\*$"
-        "\\*Fd\\*$" "\\*Find\\*$" "\\*Finder\\*$"
-
-        ;; supply both the name and major mode to match them consistently
-        "^\\*eshell.*\\*$" eshell-mode
-        "^\\*shell.*\\*$"  shell-mode
-        "^\\*term.*\\*$"   term-mode
-        "^\\*vterm.*\\*$"  vterm-mode
-        
-        help-mode
-        compilation-mode
-        devdocs-mode
-        grep-mode occur-mode rg-mode
-        
-        flymake-diagnostics-buffer-mode
-        flycheck-error-list-mode flycheck-verify-mode))
-        
-;; use `C-g' to close popper window
-(defun popper-close-window-hack (&rest _)
-  "Close popper window via `C-g'."
-  (when (and (called-interactively-p 'interactive)
-             (not (region-active-p))
-             popper-open-popup-alist)
-    (let ((window (caar popper-open-popup-alist)))
-      (when (window-live-p window)
-        (delete-window window)))))
-
-(advice-add #'keyboard-quit :before #'popper-close-window-hack)
-
-;; activate popper-mode
-(popper-mode +1)
-(popper-echo-mode +1)
 
 (provide 'init-navigation)
