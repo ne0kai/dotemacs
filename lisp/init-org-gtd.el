@@ -66,7 +66,6 @@
 ;; Agenda files
 (setq org-agenda-files '("~/org/inbox.org"
                          "~/org/school.org"
-                         "~/org/work.org"
                          "~/org/self.org"))
 
 ;; Display settings.

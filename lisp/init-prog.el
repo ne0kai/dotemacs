@@ -34,10 +34,6 @@
           (lambda () (setq-local devdocs-current-docs '("c"))))
 (add-hook 'c++-mode-hook
           (lambda () (setq-local devdocs-current-docs '("cpp"))))
-(add-hook 'java-mode-hook
-          (lambda () (setq-local devdocs-current-docs '("openjdk~21"))))
-(add-hook 'kotlin-mode-hook
-          (lambda () (setq-local devdocs-current-docs '("kotlin~1.9"))))
 
 ;;; Magit
 (with-eval-after-load 'magit

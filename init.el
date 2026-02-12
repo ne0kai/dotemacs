@@ -36,17 +36,16 @@
 (require 'init-org-gtd)
 
 ;;; lang
-(require 'init-c)
 (require 'init-lisp)
-;; (require 'init-python)
 (require 'init-latex)
-(require 'init-java)
 (require 'init-markdown)
+(require 'init-c)
 
 ;;; extra
 (require 'init-prog)
 (require 'init-dired)
 (require 'init-notes)
+(require 'init-journal)
 ;; (require 'init-utility)
 
 ;;; custom file

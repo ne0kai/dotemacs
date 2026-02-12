@@ -22,28 +22,6 @@
      (sys/linuxp (setq buffer-face-mode-face '(:family "iA Writer Duospace" :height 130))))
     (buffer-face-mode))
 
-;;; journal entry
-(defun my-journal-entry ()
-  "Open today's journal file and insert a new entry with the current time.
-If the file is new, insert a title header."
-  (interactive)
-  (let* ((date (format-time-string "%Y-%m-%d"))           ; Get today's date
-         (weekday (format-time-string "%A"))
-         (filename (concat "~/mind/timeline/daily/" date ".md"))  ; Build the filename
-         (time (format-time-string "\n\n## %H:%M "))         ; Format the time as '## hh:mm'
-         (new-file (not (file-exists-p filename)))) ; Check if file is new
-    
-    ;; Open the file and insert the journal entry at the end
-    (find-file filename)
-    (my-writing-mode)
-    (when new-file
-      (insert (format "# %s %s" date weekday))) ; Insert header if new
-    (goto-char (point-max))   ; Go to the end of the file
-    (insert time)             ; Insert the formatted time entry
-    (evil-insert-state)))
-
-(global-set-key (kbd "C-c j") #'my-journal-entry)
-
 ;;; consult-notes
 (setq consult-notes-file-dir-sources
       '(("org" ?o "~/org/")
